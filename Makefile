@@ -1,5 +1,5 @@
 # Count the words
-all: report
+all: report/_build/html/index.html
 
 results/isles.dat: data/isles.txt scripts/wordcount.py
 	python scripts/wordcount.py --input_file=data/isles.txt --output_file=results/isles.dat
@@ -27,7 +27,7 @@ results/figure/sierra.png: results/sierra.dat scripts/plotcount.py
 	python scripts/plotcount.py --input_file=results/sierra.dat --output_file=results/figure/sierra.png
 
 # write the report using jupyter-book
-report: results/figure/isles.png results/figure/abyss.png results/figure/last.png results/figure/sierra.png
+report/_build/html/index.html: results/figure/isles.png results/figure/abyss.png results/figure/last.png results/figure/sierra.png
 	jupyter-book build report
 
 # clean up
